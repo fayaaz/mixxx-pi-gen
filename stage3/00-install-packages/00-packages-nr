@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 xserver-xorg xinit xserver-xorg-video-fbdev
 mousepad
 zenity lightdm
+=======
+xserver-xorg xinit
+mousepad
+zenity lightdm gnome-themes-standard
+>>>>>>> 2a099c5... Try and remove a bunch of desktop packages
