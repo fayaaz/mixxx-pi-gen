@@ -16,10 +16,12 @@ on_chroot << EOF
     systemctl mask pipewire
     systemctl mask pipewire-pulse
     systemctl mask wireplumber
-    su pi
-    systemctl --user mask pipewire
-    systemctl --user mask pipewire.socket
-    systemctl --user mask pipewire-pulse
-    systemctl --user mask pipewire-pulse.socket
-    systemctl --user mask wireplumber
+    systemctl mask --global pipewire
+    systemctl mask --global pipewire-pulse
+    systemctl mask --global wireplumber
+    ln -sf /dev/null /home/pi/.config/systemd/user/pipewire.service
+    ln -sf /dev/null /home/pi/.config/systemd/user/pipewire.socket
+    ln -sf /dev/null /home/pi/.config/systemd/user/pipewire-pulse
+    ln -sf /dev/null /home/pi/.config/systemd/user/pipewire-pulse.socket
+    ln -sf /dev/null /home/pi/.config/systemd/user/wireplumber
 EOF
