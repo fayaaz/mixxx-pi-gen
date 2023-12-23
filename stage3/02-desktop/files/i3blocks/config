@@ -13,4 +13,4 @@ interval=5
 [shutdown]
 full_text=SHUTDOWN
 color=#880000
-command=~/.config/i3blocks/scripts/shutdown
+command=~/.config/i3blocks/scripts/shutdown.sh
