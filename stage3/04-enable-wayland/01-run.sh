@@ -19,6 +19,7 @@ on_chroot << EOF
     systemctl mask --global pipewire
     systemctl mask --global pipewire-pulse
     systemctl mask --global wireplumber
+    mkdir -p /home/pi/.config/systemd/user/
     ln -sf /dev/null /home/pi/.config/systemd/user/pipewire.service
     ln -sf /dev/null /home/pi/.config/systemd/user/pipewire.socket
     ln -sf /dev/null /home/pi/.config/systemd/user/pipewire-pulse
