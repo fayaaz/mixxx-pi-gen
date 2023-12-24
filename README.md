@@ -9,10 +9,11 @@ This repo is for the generation of a raspbian image for Mixxx.
 Included:
 - Mixxx 2.4 beta built from the [Mixxx](https://mixxx.org) repo
 - 64 bit Raspberry Pi OS (Debian 12 "bookworm")
-- irqthreads enabled on standard kernel and performance CPU governer as standard
+- preempt=full commandline argument on standard kernel and performance CPU governer as standard
 - sway (i3 for wayland) window manager with autostart to Mixxx
 - Working OpenGL waveforms
 - Extra skins included for small screen by @dennisdebel and @timewasternl
+- i3blocks buttons inspired by @EmperorJack https://github.com/EmperorJack/mixxx-pi-config
 
 ## How to install on your Raspberry Pi 4
 
