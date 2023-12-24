@@ -25,4 +25,6 @@ on_chroot << EOF
     ln -sf /dev/null /home/pi/.config/systemd/user/pipewire-pulse
     ln -sf /dev/null /home/pi/.config/systemd/user/pipewire-pulse.socket
     ln -sf /dev/null /home/pi/.config/systemd/user/wireplumber
+    ln -sf /dev/null /home/pi/.config/systemd/user/pulseaudio.service
+    ln -sf /dev/null /home/pi/.config/systemd/user/pulseaudio.socket
 EOF
