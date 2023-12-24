@@ -6,4 +6,5 @@ cp -r files/i3blocks ${ROOTFS_DIR}/home/pi/.config/
 on_chroot << EOF
     chown -R pi:root /home/pi/.config/
     chmod -R 755 /home/pi/.config/
+    chown -R pi:root /home/pi/wallpaper/
 EOF
