@@ -1,0 +1,45 @@
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["backlight", "clock","tray","custom/keyboard", "custom/mixxx", "custom/power"],
+    "sway/window": {
+        "max-length": 50
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "custom/keyboard": {
+        "format": " Keyboard ",
+	"on-click": "/bin/bash $HOME/.config/waybar/wvkeyboard.sh",
+        "spacing": 10
+    },
+    "custom/mixxx": {
+        "format": " Mixxx ",
+        "on-click": "/bin/bash $HOME/.config/waybar/mixxx.sh",
+        "spacing": 10
+    },
+    "custom/power": {
+	"format": " Exit ",
+        "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown'  'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit' -b 'Hibernate' 'systemctl hibernate' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
+    },
+    "custom/mixxxnowplaying": {
+        "format": " {} ⏯︎ ",
+        "on-click": "/bin/bash $HOME/.config/waybar/mixxxnowplaying.sh start",
+        "on-click-right": "pkill -f mixxxnowplaying.sh",
+        "exec": "/bin/bash $HOME/.config/waybar/mixxxnowplaying.sh status",
+        "interval": 5,
+        "return-type": ""
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": [""]
+    }
+}

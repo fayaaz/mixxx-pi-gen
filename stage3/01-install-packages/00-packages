@@ -5,7 +5,9 @@ policykit-1
 rfkill
 fonts-droid-fallback
 fonts-liberation2 fonts-font-awesome
-udevil systemd-timesyncd
+udevil udiskie
+libayatana-appindicator3-dev
+systemd-timesyncd
 libgl1-mesa-dri libgles1 libgles2-mesa
 g++ git scons libportmidi-dev libopusfile-dev ffmpeg
 libshout-dev libtag1-dev libprotobuf-dev protobuf-compiler
@@ -22,6 +24,7 @@ libqt5svg5-dev libqt5x11extras5-dev libvamp-sdk2v5 libhidapi-libusb0 libqt5sql5-
 libglu1-mesa-dev
 cmake ccache
 debhelper markdown docbook-to-man devscripts
-lightdm foot sway i3blocks i3status wvkbd
+lightdm foot sway waybar i3status wvkbd
 wdisplays firefox xwayland
+network-manager-gnome
 syncthing
