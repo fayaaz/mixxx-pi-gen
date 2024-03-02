@@ -38,6 +38,15 @@
         "interval": 5,
         "return-type": ""
     },
+    "custom/syncthing": {
+        "format": " syncthing {} ", 
+        "on-click": "systemctl --user start syncthing.service",
+        "on-click-right": "systemctl --user stop syncthing.service",
+        "on-double-click": "syncthing -browser-only",
+        "exec": "systemctl --user is-active syncthing.service ||:",
+        "interval": 10,
+        "return-type": ""
+    },
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": [""]
