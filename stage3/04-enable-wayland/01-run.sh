@@ -19,6 +19,7 @@ on_chroot << EOF
     systemctl mask --global pipewire
     systemctl mask --global pipewire-pulse
     systemctl mask --global wireplumber
+    systemctl mask --xdg-desktop-portal
     mkdir -p /home/pi/.config/systemd/user/
     ln -sf /dev/null /home/pi/.config/systemd/user/pipewire.service
     ln -sf /dev/null /home/pi/.config/systemd/user/pipewire.socket
@@ -27,4 +28,5 @@ on_chroot << EOF
     ln -sf /dev/null /home/pi/.config/systemd/user/wireplumber
     ln -sf /dev/null /home/pi/.config/systemd/user/pulseaudio.service
     ln -sf /dev/null /home/pi/.config/systemd/user/pulseaudio.socket
+    ln -sf /dev/null /home/pi/.config/systemd/user/xdg-desktop-portal.service
 EOF
