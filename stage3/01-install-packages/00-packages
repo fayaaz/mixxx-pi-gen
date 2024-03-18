@@ -26,5 +26,5 @@ cmake ccache
 debhelper markdown docbook-to-man devscripts
 lightdm foot sway waybar i3status wvkbd
 wdisplays firefox xwayland
-network-manager-gnome
+network-manager-gnome nautilus
 syncthing
