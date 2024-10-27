@@ -12,17 +12,10 @@ on:
       - "**"
   schedule:
     - cron: '30 0 * * *'
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  build_self_hosted:
     runs-on: self-hosted
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: 'Cleanup build folder'
       run: |
         ls -la ./
@@ -34,7 +27,6 @@ jobs:
       run: sudo apt-get update
     - name: Install deps
       run: sudo apt-get install coreutils quilt parted kpartx qemu-utils qemu-user-static debootstrap zerofree zip dosfstools libarchive-tools libcap2-bin grep rsync xz-utils file git curl bc
-    # Runs a single command using the runners shell
     - run: mkdir .ccache
     - name: "Set up ccache cache"
       uses: actions/cache@v4
@@ -63,4 +55,39 @@ jobs:
       with:
         name: mixxx-version
         path: deploy/*.version
-    
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: Update apt-get
+      run: sudo apt-get update
+    - name: Install deps
+      run: sudo apt-get install coreutils quilt parted kpartx qemu-utils qemu-user-static debootstrap zerofree zip dosfstools libarchive-tools libcap2-bin grep rsync xz-utils file git curl bc
+    - run: mkdir .ccache
+    - name: "Set up ccache cache"
+      uses: actions/cache@v4
+      with:
+        path: .ccache
+        key: ccache-${{ github.head_ref }}-${{ github.run_number }}
+        restore-keys: |
+          ccache-${{ github.head_ref }}
+          ccache
+    - run: ls -lah .ccache
+    - name: Build
+      run: sudo ./build.sh
+    - uses: actions/upload-artifact@v4
+      with:
+        name: debs
+        path: deploy/*.deb
+    - uses: actions/upload-artifact@v4
+      with:
+        name: images
+        path: deploy/*.zip
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages-info
+        path: deploy/*.info
+    - uses: actions/upload-artifact@v4
+      with:
+        name: mixxx-version
+        path: deploy/*.version
