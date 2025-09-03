@@ -4,7 +4,7 @@ mkdir -p ${BASE_DIR}/.ccache/
 mkdir -p "${ROOTFS_DIR}/ccache"
 mount --bind ${BASE_DIR}/.ccache  "${ROOTFS_DIR}/ccache"
 on_chroot << EOF
-    git clone --branch patch-5 https://github.com/fayaaz/mixxx.git /code/
+    git clone --branch 2.5 https://github.com/mixxxdj/mixxx.git /code/
     cd /code/
     tools/debian_buildenv.sh setup
     git rev-parse HEAD > /opt/mixxx.version

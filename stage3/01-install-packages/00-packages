@@ -1,14 +1,13 @@
 git
 #omxplayer
 alsa-utils
-policykit-1
 rfkill
 fonts-droid-fallback
 fonts-liberation2 fonts-font-awesome
 udevil udiskie
 libayatana-appindicator3-dev
 systemd-timesyncd
-libgl1-mesa-dri libgles1 libgles2-mesa
+libgl1-mesa-dri libgles1 libgles2
 g++ git scons libportmidi-dev libopusfile-dev ffmpeg
 libshout-dev libtag1-dev libprotobuf-dev protobuf-compiler
 libusb-1.0-0-dev libfftw3-dev libmad0-dev portaudio19-dev

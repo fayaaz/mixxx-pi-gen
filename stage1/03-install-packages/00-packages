@@ -1,2 +1,2 @@
-libraspberrypi-bin libraspberrypi0
+raspi-utils-dt raspi-utils-core libdtovl0
 systemd-timesyncd

@@ -5,7 +5,7 @@ python-is-python3
 v4l-utils
 python3-libgpiod
 python3-gpiozero
-pigpio python3-pigpio raspi-gpio
+python3-pigpio
 python3-spidev
 python3-smbus2
 avahi-daemon
@@ -25,7 +25,7 @@ libmtp-runtime
 rsync
 htop
 man-db
-policykit-1
+polkitd pkexec
 ssh-import-id
 ethtool
 ntfs-3g
