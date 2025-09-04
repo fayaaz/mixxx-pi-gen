@@ -24,7 +24,7 @@ libqt5svg5-dev libqt5x11extras5-dev libvamp-sdk2v5 libhidapi-libusb0 libqt5sql5-
 libglu1-mesa-dev
 cmake ccache
 debhelper markdown docbook-to-man devscripts
-lightdm foot sway waybar i3status wvkbd
+lightdm foot sway waybar i3status wvkbd fuzzel
 wdisplays firefox xwayland
 network-manager-gnome nautilus
 syncthing
