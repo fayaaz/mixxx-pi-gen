@@ -3,7 +3,7 @@ console-setup keyboard-configuration debconf-utils parted
 build-essential manpages-dev bash-completion gdb pkg-config
 python-is-python3
 v4l-utils
-python3-libgpiod
+gpiod python3-libgpiod
 python3-gpiozero
 python3-pigpio
 python3-spidev
@@ -15,10 +15,11 @@ ca-certificates curl
 fake-hwclock nfs-common usbutils
 libfreetype6-dev
 dosfstools
-dphys-swapfile
+rpi-swap rpi-loop-utils
 raspberrypi-sys-mods
 apt-listchanges
 usb-modeswitch
+usbutils
 libpam-chksshpwd
 rpi-update
 libmtp-runtime
