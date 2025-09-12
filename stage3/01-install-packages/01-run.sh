@@ -9,7 +9,7 @@ on_chroot << EOF
     tools/debian_buildenv.sh setup
     git rev-parse HEAD > /opt/mixxx.version
     export CCACHE_DIR=/ccache
-    ccache -M 5G
+    ccache -M 10G
     export CCACHE_NOCOMPRESS="true"
     export CTEST_PARALLEL_LEVEL="$(nproc)"
     export CMAKE_BUILD_PARALLEL_LEVEL="$(nproc)"
