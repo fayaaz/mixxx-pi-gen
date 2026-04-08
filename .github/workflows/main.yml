@@ -126,8 +126,14 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         tag: nightly
-        name: Nightly
-        body: "Nightly build ${{ steps.mixxx-version.outputs.VERSION }}"
+        name: Nightly (Mixxx ${{ steps.mixxx-version.outputs.VERSION }})
+        body: |
+          ## Nightly Build
+          
+          **Mixxx Version:** ${{ steps.mixxx-version.outputs.VERSION }}
+          
+          This is an automated nightly build of the Mixxx Pi image.
+        prerelease: true
         artifacts: "debs/*,images/*,info/*,version/*"
         allowNamedRelease: false
         token: ${{ secrets.GITHUB_TOKEN }}
