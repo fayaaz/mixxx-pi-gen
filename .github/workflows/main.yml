@@ -2,8 +2,6 @@
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
 on:
   push:
     branches: [ main ]
@@ -12,6 +10,7 @@ on:
       - "**"
   schedule:
     - cron: '30 0 * * *'
+
 jobs:
   # build_self_hosted:
   #   runs-on: self-hosted
@@ -91,3 +90,44 @@ jobs:
       with:
         name: mixxx-version-qemu
         path: deploy/*.version
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    # if: github.event_name == 'schedule'
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+    - name: Download debs
+      uses: actions/download-artifact@v4
+      with:
+        name: debs-qemu
+        path: debs
+    - name: Download images
+      uses: actions/download-artifact@v4
+      with:
+        name: images-qemu
+        path: images
+    - name: Download packages-info
+      uses: actions/download-artifact@v4
+      with:
+        name: packages-info-qemu
+        path: info
+    - name: Download mixxx-version
+      uses: actions/download-artifact@v4
+      with:
+        name: mixxx-version-qemu
+        path: version
+    - name: Get mixxx version
+      id: mixxx-version
+      run: echo "VERSION=$(cat version/*.version)" >> $GITHUB_OUTPUT
+    - name: Upload to Nightly Release
+      uses: ncipollo/release-action@v1
+      with:
+        tag: nightly
+        name: Nightly
+        body: "Nightly build ${{ steps.mixxx-version.outputs.VERSION }}"
+        artifacts: "debs/*,images/*,info/*,version/*"
+        allowNamedRelease: false
+        token: ${{ secrets.GITHUB_TOKEN }}
