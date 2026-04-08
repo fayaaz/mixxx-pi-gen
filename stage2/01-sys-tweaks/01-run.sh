@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-install -m 755 files/resize2fs_once	"${ROOTFS_DIR}/etc/init.d/"
-
 install -d				"${ROOTFS_DIR}/etc/systemd/system/rc-local.service.d"
 install -m 644 files/ttyoutput.conf	"${ROOTFS_DIR}/etc/systemd/system/rc-local.service.d/"
 
@@ -23,29 +21,20 @@ if [ "${PUBKEY_ONLY_SSH}" = "1" ]; then
 s/^#?[[:blank:]]*PasswordAuthentication[[:blank:]]*yes[[:blank:]]*$/PasswordAuthentication no/' "${ROOTFS_DIR}"/etc/ssh/sshd_config
 fi
 
-on_chroot << EOF
-systemctl disable hwclock.sh
-systemctl disable nfs-common
-systemctl disable rpcbind
-if [ "${ENABLE_SSH}" == "1" ]; then
-	systemctl enable ssh
-else
-	systemctl disable ssh
-fi
-systemctl enable regenerate_ssh_host_keys
+	on_chroot << EOF
+	if [ "${ENABLE_SSH}" == "1" ]; then
+		systemctl enable ssh
+	else
+		systemctl disable ssh
+	fi
+	systemctl enable rpi-resize
+	systemctl enable regenerate_ssh_host_keys
 EOF
 
 if [ "${USE_QEMU}" = "1" ]; then
 	echo "enter QEMU mode"
 	install -m 644 files/90-qemu.rules "${ROOTFS_DIR}/etc/udev/rules.d/"
-	on_chroot << EOF
-systemctl disable resize2fs_once
-EOF
 	echo "leaving QEMU mode"
-else
-	on_chroot << EOF
-systemctl enable resize2fs_once
-EOF
 fi
 
 on_chroot <<EOF
