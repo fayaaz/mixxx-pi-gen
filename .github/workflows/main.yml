@@ -135,5 +135,5 @@ jobs:
           This is an automated nightly build of the Mixxx Pi image.
         prerelease: true
         artifacts: "debs/*,images/*,info/*,version/*"
-        allowNamedRelease: false
+        updateOnlyUnreleased: true
         token: ${{ secrets.GITHUB_TOKEN }}
