@@ -82,7 +82,7 @@ fi
 # Modify original build-options to allow config file to be mounted in the docker container
 BUILD_OPTS="$(echo "${BUILD_OPTS:-}" | sed -E 's@\-c\s?([^ ]+)@-c /config@')"
 
-${DOCKER} build --build-arg BASE_IMAGE=debian:bullseye -t pi-gen "${DIR}"
+${DOCKER} build --build-arg BASE_IMAGE=debian:trixie -t pi-gen "${DIR}"
 
 if [ "${CONTAINER_EXISTS}" != "" ]; then
   DOCKER_CMDLINE_NAME="${CONTAINER_NAME}_cont"
@@ -105,10 +105,10 @@ case $(uname -m) in
     ;;
 esac
 
-# Check if qemu-aarch64-static and /proc/sys/fs/binfmt_misc are present
+# Check if qemu-aarch64 and /proc/sys/fs/binfmt_misc are present
 if [[ "${binfmt_misc_required}" == "1" ]]; then
-  if ! qemu_arm=$(which qemu-aarch64-static) ; then
-    echo "qemu-aarch64-static not found (please install qemu-user-static)"
+  if ! qemu_arm=$(which qemu-aarch64) ; then
+    echo "qemu-aarch64 not found (please install qemu-user-binfmt)"
     exit 1
   fi
   if [ ! -f /proc/sys/fs/binfmt_misc/register ]; then
@@ -144,7 +144,7 @@ time ${DOCKER} run \
   $DOCKER_CMDLINE_POST \
   pi-gen \
   bash -e -o pipefail -c "
-    dpkg-reconfigure qemu-user-static &&
+    dpkg-reconfigure qemu-user-binfmt &&
     # binfmt_misc is sometimes not mounted with debian bullseye image
     (mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc || true) &&
     cd /pi-gen; ./build.sh ${BUILD_OPTS} &&

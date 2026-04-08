@@ -21,7 +21,7 @@ if [ -d "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config" ]; then
 	chmod 700 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config"
 fi
 
-rm -f "${ROOTFS_DIR}/usr/bin/qemu-arm-static"
+rm -f "${ROOTFS_DIR}/usr/bin/qemu-arm"
 
 if [ "${USE_QEMU}" != "1" ]; then
 	if [ -e "${ROOTFS_DIR}/etc/ld.so.preload.disabled" ]; then
@@ -47,8 +47,7 @@ rm -f "${ROOTFS_DIR}"/var/lib/dpkg/*-old
 rm -f "${ROOTFS_DIR}"/usr/share/icons/*/icon-theme.cache
 
 rm -f "${ROOTFS_DIR}/var/lib/dbus/machine-id"
-
-true > "${ROOTFS_DIR}/etc/machine-id"
+rm -f "${ROOTFS_DIR}/etc/machine-id"
 
 ln -nsf /proc/mounts "${ROOTFS_DIR}/etc/mtab"
 

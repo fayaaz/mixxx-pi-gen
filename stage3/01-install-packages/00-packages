@@ -1,14 +1,11 @@
 git
-#omxplayer
 alsa-utils
-policykit-1
+polkitd
 rfkill
 fonts-droid-fallback
 fonts-liberation2 fonts-font-awesome
-udevil udiskie
-libayatana-appindicator3-dev
 systemd-timesyncd
-libgl1-mesa-dri libgles1 libgles2-mesa
+libgl1-mesa-dri libgles1 libgles2
 g++ git scons libportmidi-dev libopusfile-dev ffmpeg
 libshout-dev libtag1-dev libprotobuf-dev protobuf-compiler
 libusb-1.0-0-dev libfftw3-dev libmad0-dev portaudio19-dev
@@ -24,7 +21,12 @@ libqt5svg5-dev libqt5x11extras5-dev libvamp-sdk2v5 libhidapi-libusb0 libqt5sql5-
 libglu1-mesa-dev
 cmake ccache
 debhelper markdown docbook-to-man devscripts
-lightdm foot sway waybar i3status wvkbd fuzzel
-wdisplays firefox xwayland
-network-manager-gnome nautilus
+lightdm foot sway waybar i3status wvkbd fuzzel wdisplays xwayland
+udevil udiskie
+sway-notification-center
+libayatana-appindicator3-1
+libnotify4
+firefox
 syncthing
+network-manager-gnome
+nautilus
