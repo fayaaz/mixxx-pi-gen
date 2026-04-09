@@ -144,11 +144,13 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         tag: nightly
+        commit: ${{ steps.mixxx-version.outputs.COMMIT }}
         name: Nightly (Mixxx ${{ steps.mixxx-version.outputs.TAG }})
         body: |
           ## Nightly Build
           - [Mixxx ${{ steps.mixxx-version.outputs.TAG }}](https://github.com/mixxxdj/mixxx/commit/${{ steps.mixxx-version.outputs.COMMIT }})
         prerelease: true
-        omitDraftDuringUpdate: true
+        allowUpdates: true
+        immutableCreate: true
         artifacts: "debs/*,images/*,info/*,version/*"
         token: ${{ secrets.GITHUB_TOKEN }}
