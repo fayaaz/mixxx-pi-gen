@@ -99,7 +99,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'schedule'
-    # if: github.event_name == 'schedule'
     permissions:
       contents: write
     steps:
@@ -150,5 +149,6 @@ jobs:
           ## Nightly Build
           - [Mixxx ${{ steps.mixxx-version.outputs.TAG }}](https://github.com/mixxxdj/mixxx/commit/${{ steps.mixxx-version.outputs.COMMIT }})
         prerelease: true
+        omitDraftDuringUpdate: true
         artifacts: "debs/*,images/*,info/*,version/*"
         token: ${{ secrets.GITHUB_TOKEN }}
