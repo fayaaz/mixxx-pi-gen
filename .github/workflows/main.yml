@@ -122,6 +122,13 @@ jobs:
     - name: Get mixxx version
       id: mixxx-version
       run: echo "VERSION=$(cat version/*.version)" >> $GITHUB_OUTPUT
+    - name: Delete existing nightly release
+      run: |
+        if gh release view nightly --repo $GITHUB_REPOSITORY 2>/dev/null; then
+          gh release delete nightly --repo $GITHUB_REPOSITORY --cleanup-tag --yes
+        fi
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload to Nightly Release
       uses: ncipollo/release-action@v1
       with:
@@ -135,5 +142,8 @@ jobs:
           This is an automated nightly build of the Mixxx Pi image.
         prerelease: true
         artifacts: "debs/*,images/*,info/*,version/*"
+<<<<<<< Updated upstream
         updateOnlyUnreleased: true
+=======
+>>>>>>> Stashed changes
         token: ${{ secrets.GITHUB_TOKEN }}
