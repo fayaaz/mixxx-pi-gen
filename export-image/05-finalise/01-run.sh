@@ -3,6 +3,7 @@
 IMG_FILE="${STAGE_WORK_DIR}/${IMG_FILENAME}${IMG_SUFFIX}.img"
 INFO_FILE="${STAGE_WORK_DIR}/${IMG_FILENAME}${IMG_SUFFIX}.info"
 MIXXX_VERSION_FILE="${STAGE_WORK_DIR}/${IMG_FILENAME}-mixxx.version"
+MIXXX_TAG_FILE="${STAGE_WORK_DIR}/${IMG_FILENAME}-mixxx.tag"
 
 sed -i 's/^update_initramfs=.*/update_initramfs=all/' "${ROOTFS_DIR}/etc/initramfs-tools/update-initramfs.conf"
 
@@ -61,6 +62,7 @@ install -m 644 "${ROOTFS_DIR}/etc/rpi-issue" "${ROOTFS_DIR}/boot/firmware/issue.
 
 cp "$ROOTFS_DIR/etc/rpi-issue" "$INFO_FILE"
 cp "$ROOTFS_DIR/opt/mixxx.version" "$MIXXX_VERSION_FILE"
+cp "$ROOTFS_DIR/opt/mixxx.tag" "$MIXXX_TAG_FILE"
 
 {
 	if [ -f "$ROOTFS_DIR/usr/share/doc/raspberrypi-kernel/changelog.Debian.gz" ]; then
@@ -121,3 +123,4 @@ none | *)
 esac
 
 mv "$MIXXX_VERSION_FILE" "$DEPLOY_DIR"
+mv "$MIXXX_TAG_FILE" "$DEPLOY_DIR"
