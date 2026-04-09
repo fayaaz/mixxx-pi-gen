@@ -144,7 +144,6 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         tag: nightly
-        commit: ${{ steps.mixxx-version.outputs.COMMIT }}
         name: Nightly (Mixxx ${{ steps.mixxx-version.outputs.TAG }})
         body: |
           ## Nightly Build
