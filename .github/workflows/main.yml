@@ -90,6 +90,10 @@ jobs:
       with:
         name: mixxx-version-qemu
         path: deploy/*.version
+    - uses: actions/upload-artifact@v4
+      with:
+        name: mixxx-tag-qemu
+        path: deploy/*.tag
 
   release:
     needs: build
@@ -119,9 +123,16 @@ jobs:
       with:
         name: mixxx-version-qemu
         path: version
+    - name: Download mixxx-tag
+      uses: actions/download-artifact@v4
+      with:
+        name: mixxx-tag-qemu
+        path: tag
     - name: Get mixxx version
       id: mixxx-version
-      run: echo "VERSION=$(cat version/*.version)" >> $GITHUB_OUTPUT
+      run: |
+        echo "COMMIT=$(cat version/*.version)" >> $GITHUB_OUTPUT
+        echo "TAG=$(cat tag/*.tag)" >> $GITHUB_OUTPUT
     - name: Delete existing nightly release
       run: |
         if gh release view nightly --repo $GITHUB_REPOSITORY 2>/dev/null; then
@@ -133,13 +144,10 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         tag: nightly
-        name: Nightly (Mixxx ${{ steps.mixxx-version.outputs.VERSION }})
+        name: Nightly (Mixxx ${{ steps.mixxx-version.outputs.TAG }})
         body: |
           ## Nightly Build
-          
-          **Mixxx Version:** ${{ steps.mixxx-version.outputs.VERSION }}
-          
-          This is an automated nightly build of the Mixxx Pi image.
+          - [Mixxx ${{ steps.mixxx-version.outputs.TAG }}](https://github.com/mixxxdj/mixxx/commit/${{ steps.mixxx-version.outputs.COMMIT }})
         prerelease: true
         artifacts: "debs/*,images/*,info/*,version/*"
         token: ${{ secrets.GITHUB_TOKEN }}

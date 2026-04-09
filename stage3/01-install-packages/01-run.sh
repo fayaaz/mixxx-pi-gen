@@ -8,6 +8,7 @@ on_chroot << EOF
     cd /code/
     tools/debian_buildenv.sh setup
     git rev-parse HEAD > /opt/mixxx.version
+    git describe --tags --always > /opt/mixxx.tag
     export CCACHE_DIR=/ccache
     ccache -M 10G
     export CCACHE_NOCOMPRESS="true"
