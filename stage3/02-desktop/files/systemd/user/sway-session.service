@@ -1,0 +1,10 @@
+[Unit]
+Description=sway window manager session
+PartOf=sway-session.target
+Wants=sway-session.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+Restart=on-failure

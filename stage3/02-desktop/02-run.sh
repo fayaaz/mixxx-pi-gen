@@ -3,6 +3,9 @@ mkdir -p -m 755 ${ROOTFS_DIR}/home/pi/.config/sway/
 install -m 755 files/i3.conf ${ROOTFS_DIR}/home/pi/.config/sway/config
 mkdir -p -m 755 ${ROOTFS_DIR}/home/pi/.config/xdg-desktop-portal/
 install -m 644 files/xdg-desktop-portal-sway.conf ${ROOTFS_DIR}/home/pi/.config/xdg-desktop-portal/sway.conf
+mkdir -p -m 755 ${ROOTFS_DIR}/home/pi/.config/systemd/user/
+install -m 644 files/systemd/user/sway-session.service ${ROOTFS_DIR}/home/pi/.config/systemd/user/
+install -m 644 files/systemd/user/sway-session.target ${ROOTFS_DIR}/home/pi/.config/systemd/user/
 cp -r files/wallpaper ${ROOTFS_DIR}/home/pi/
 cp -r files/i3blocks ${ROOTFS_DIR}/home/pi/.config/
 cp -r files/waybar  ${ROOTFS_DIR}/home/pi/.config/
