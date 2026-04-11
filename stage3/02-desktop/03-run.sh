@@ -16,4 +16,7 @@ install -m 644 files/00-usbmountflags.conf ${ROOTFS_DIR}/etc/systemd/system/syst
 
 on_chroot << EOF
     apt remove -y cups cups-browsed cups-daemon
+    apt remove -y lxpanel lxsession lxlock lxpolkit lxmenu-data lxsession-logout
+    apt remove -y openbox
+    apt autoremove -y
 EOF
