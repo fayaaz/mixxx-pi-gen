@@ -17,17 +17,17 @@
         "format-alt": "{:%a, %d. %b  %H:%M}"
     },
     "custom/keyboard": {
-        "format": " Keyboard ",
+        "format": "  ",
 	"on-click": "/bin/bash $HOME/.config/waybar/wvkeyboard.sh",
         "spacing": 10
     },
     "custom/mixxx": {
-        "format": " Mixxx ",
+        "format": "  ",
         "on-click": "/bin/bash $HOME/.config/waybar/mixxx.sh",
         "spacing": 10
     },
     "custom/power": {
-	"format": " Exit ",
+	"format": "  ",
         "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown'  'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
     },
     "custom/mixxxnowplaying": {
@@ -39,7 +39,7 @@
         "return-type": ""
     },
     "custom/syncthing": {
-        "format": " syncthing {} ", 
+        "format": "  {} ",
         "on-click": "systemctl --user start syncthing.service",
         "on-click-right": "systemctl --user stop syncthing.service",
         "on-double-click": "syncthing -browser-only",
