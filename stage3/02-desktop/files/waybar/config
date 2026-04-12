@@ -18,16 +18,19 @@
     },
     "custom/keyboard": {
         "format": "  ",
-	"on-click": "/bin/bash $HOME/.config/waybar/wvkeyboard.sh",
+        "tooltip-format": "Keyboard",
+	    "on-click": "/bin/bash $HOME/.config/waybar/wvkeyboard.sh",
         "spacing": 10
     },
     "custom/mixxx": {
         "format": "  ",
+        "tooltip-format": "Mixxx",
         "on-click": "/bin/bash $HOME/.config/waybar/mixxx.sh",
         "spacing": 10
     },
     "custom/power": {
-	"format": "  ",
+        "format": "  ",
+        "tooltip-format": "Power",
         "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown'  'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
     },
     "custom/mixxxnowplaying": {
