@@ -2,8 +2,12 @@
 
 _Mixxx image for the raspberry pi_
 
+Raspberry pi image - start DJing in minutes with a raspberry pi, screen and DJ controller.
+
  [![Get the latest release](https://img.shields.io/github/release-date/fayaaz/mixxx-pi-gen)](https://github.com/fayaaz/mixxx-pi-gen/releases/latest)
 ![GitHub All Releases](https://img.shields.io/github/downloads/fayaaz/mixxx-pi-gen/total)
+
+tl;dr just want to dj with the latest image: [instructions](https://github.com/fayaaz/mixxx-pi-gen/wiki/Installing-the-Nightly-Build)
 
 This repo is for the generation of a raspbian image for Mixxx.
 Included:
@@ -15,6 +19,8 @@ Included:
 - Extra skins included for small screen by @dennisdebel and @timewasternl
 - waybar and (useful) buttons
 - wallpaper from Unsplash by [Daniel Olah](https://unsplash.com/@danesduet?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+
+
 
 ## How to install on your Raspberry Pi 3/4/400/5
 
