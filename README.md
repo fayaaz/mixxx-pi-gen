@@ -53,7 +53,7 @@ Make sure you restart to see its effects. You will need a good power supply to e
 
 Extra debugging:
 
-Plugging in a keyboard and hitting `alt+enter` will give you a terminal.
+Plugging in a keyboard and hitting `super+enter` will give you a terminal.
 Logs for mixxx are available at: /home/pi/.mixxx/mixxx.log
 
 Original instructions of forked repo are in [pi-gen-readme](pi-gen-readme.md)
